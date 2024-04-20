@@ -6,7 +6,7 @@ def isdictlike(obj):
 
 
 def islistlike(obj):
-    return isiterable(obj) and not isinstance(obj, str)
+    return isiterable(obj) and not isdictlike(obj) and not isinstance(obj, str)
 
 
 def isiterable(obj):
