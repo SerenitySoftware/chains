@@ -46,8 +46,11 @@ jobs:
       if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
       run: |
         poetry run coverage xml
-        content=$(cat coverage.xml)
-        echo "coverage=${content}" >> "$GITHUB_OUTPUT"
+        {
+          echo 'coverage<<EOF'
+          cat coverage.xml
+          echo 'EOF'
+        } >> "GITHUB_OUTPUT"
   publish:
     runs-on: ubuntu-latest
     needs: verification
