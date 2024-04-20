@@ -4,6 +4,7 @@ on: [pull_request]
 
 jobs:
   verification:
+    name: Code Analysis and Testing
     strategy:
       fail-fast: false
       matrix:
@@ -52,11 +53,14 @@ jobs:
           echo 'EOF'
         } >> "GITHUB_OUTPUT"
   publish:
+    name: Publish Quality Metrics
     runs-on: ubuntu-latest
     needs: verification
     steps:
       - name: Dump Coverage Report
-        run: echo "${{ needs.verification.outputs.coverage }}" > coverage.xml
+        run: echo "$COVERAGE" > coverage.xml
+        env:
+          COVERAGE: ${{needs.verification.outputs.coverage}}
       - name: Publish Coverage Report
         uses: irongut/CodeCoverageSummary@v1.3.0
         with:
