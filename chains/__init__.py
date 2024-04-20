@@ -1,3 +1,3 @@
-__all__ = ['Chain']
+__all__ = ["Chain"]
 
 from .chain import Chain

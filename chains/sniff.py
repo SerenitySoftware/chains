@@ -2,7 +2,7 @@ from collections.abc import Iterable, Mapping
 
 
 def isdictlike(obj):
-    return isinstance(obj, Mapping) or hasattr(obj, 'items')
+    return isinstance(obj, Mapping) or hasattr(obj, "items")
 
 
 def islistlike(obj):
