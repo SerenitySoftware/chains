@@ -1,4 +1,4 @@
-from .sniff import isdictlike, isiterable, islistlike
+from .sniff import isdictlike, isiterable
 
 
 class Chain:
