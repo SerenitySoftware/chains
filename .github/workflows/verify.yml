@@ -72,7 +72,7 @@ jobs:
           hide_complexity: false
           indicators: true
           output: both
-          thresholds: '80 90'
+          thresholds: '100 100'
       - name: Publish Coverage PR Comment
         uses: marocchino/sticky-pull-request-comment@v2
         if: github.event_name == 'pull_request'

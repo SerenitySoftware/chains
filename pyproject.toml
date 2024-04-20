@@ -1,6 +1,9 @@
 [tool.black]
 line-length = 120
 
+[tool.coverage.report]
+fail_under = 100
+
 [tool.poetry]
 name = "chains"
 version = "1.0.0"
