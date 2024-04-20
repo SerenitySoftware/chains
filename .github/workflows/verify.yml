@@ -51,7 +51,7 @@ jobs:
           echo 'coverage<<EOF'
           cat coverage.xml
           echo 'EOF'
-        } >> "GITHUB_OUTPUT"
+        } >> "$GITHUB_OUTPUT"
   publish:
     name: Publish Quality Metrics
     runs-on: ubuntu-latest
