@@ -1,4 +1,4 @@
-from .sniff import isdictlike, isiterable, islistlike
+from .sniff import isdictlike, isiterable
 
 
 class Chain:
@@ -27,8 +27,6 @@ class Chain:
             attr = self._wrapped.get(name, None)
             if attr is None and name in ["keys", "items", "values"] and hasattr(self._wrapped, name):
                 attr = getattr(self._wrapped, name)
-        elif islistlike(self._wrapped):
-            attr = self._wrapped[int(name)]
 
         return Chain(attr)
 
@@ -70,28 +68,32 @@ class Chain:
         return self._wrapped != self.__maybe_unwrap(other)
 
     def __gt__(self, other):
-        if self._wrapped is None:
-            return False
+        comparison = self._wrapped
+        if comparison is None:
+            comparison = 0
 
-        return self._wrapped > other
+        return comparison > other
 
     def __ge__(self, other):
-        if self._wrapped is None:
-            return False
+        comparison = self._wrapped
+        if comparison is None:
+            comparison = 0
 
-        return self._wrapped >= other
+        return comparison >= other
 
     def __lt__(self, other):
-        if self._wrapped is None:
-            return True
+        comparison = self._wrapped
+        if comparison is None:
+            comparison = 0
 
-        return self._wrapped < other
+        return comparison < other
 
     def __le__(self, other):
-        if self._wrapped is None:
-            return True
+        comparison = self._wrapped
+        if comparison is None:
+            comparison = 0
 
-        return self._wrapped <= other
+        return comparison <= other
 
     def __add__(self, other):
         if self._wrapped is None:
